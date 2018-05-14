@@ -1,15 +1,38 @@
 pipeline {
   agent any
   stages {
-    stage('Inicio') {
+    stage('Build') {
       steps {
-        echo 'Hola desde stage inicio'
+        echo 'BUILD'
+		echo ''
       }
     }
-    stage('Test2') {
+	post {
+		always{
+			echo "Esto siempre sale por pantalla"
+		}
+		failure {
+			echo "Fallo"
+		}
+		success {
+			echo "Ha salido bien"
+		}
+	}
+    stage('Test') {
       steps {
-        echo 'hola desde stage dos'
+        echo 'TEST'
       }
     }
+	stage('Deploy') {
+      steps {
+        echo 'DEPLOY'
+      }
+    }
+	post {
+		always(dir){
+			cleanWS
+			echo "Esto siempre sale por pantalla"
+		}
+	}
   }
 }
