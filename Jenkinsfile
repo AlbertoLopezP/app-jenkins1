@@ -28,11 +28,5 @@ pipeline {
         echo 'DEPLOY'
       }
     }
-	post {
-		always(dir){
-			cleanWS
-			echo "Esto siempre sale por pantalla"
-		}
-	}
   }
 }
