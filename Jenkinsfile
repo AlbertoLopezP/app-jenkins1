@@ -7,17 +7,6 @@ pipeline {
 		echo ''
       }
     }
-	post {
-		always{
-			echo "Esto siempre sale por pantalla"
-		}
-		failure {
-			echo "Fallo"
-		}
-		success {
-			echo "Ha salido bien"
-		}
-	}
     stage('Test') {
       steps {
         echo 'TEST'
