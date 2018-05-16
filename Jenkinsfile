@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t app .'
+        sh 'docker build -t app:test .'
       }
     }
     stage('Test') {
       steps {
         echo 'TEST'
-		sh 'docker run -d -p 80:80 -rm app'
+		sh 'docker run -d -p 80:80 --name app -rm app:test'
 		sh '/bin/nc -vz localhost 80'
 		sh 'docker stop app'
       }
@@ -17,7 +17,7 @@ pipeline {
 	stage('Push Registry') {
       steps {
         echo 'DEPLOY'
-		sh 'docker tag app aremox/app:stable'
+		sh 'docker tag app:test aremox/app:stable'
 		sh 'docker push aremox/app:stable'
       }
     }
