@@ -16,7 +16,7 @@ pipeline {
     }
 	stage('Push Registry') {
       steps {
-		withCredentials([usernamePassword(credentialsId: 'usuarioPassword', passwordVariable: 'Password', usernameVariable: 'Usuario')]) {		echo 'DEPLOY'
+		withCredentials([usernamePassword(credentialsId: 'aremox_dockerhub', passwordVariable: 'Password', usernameVariable: 'Usuario')]) {		echo 'DEPLOY'
 		sh 'docker tag app:test aremox/app:stable'
 		sh 'docker push aremox/app:stable'
 		}
