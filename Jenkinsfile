@@ -16,7 +16,7 @@ pipeline {
 	stage('Push Registry') {
       steps {
         echo 'DEPLOY'
-		sh 'docker tag app:test app:stable'
+		sh 'docker tag app:test aremox/app:stable'
 		sh 'docker push aremox/app:stable'
       }
     }
