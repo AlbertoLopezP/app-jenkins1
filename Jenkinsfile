@@ -18,7 +18,7 @@ pipeline {
       steps {
 		withCredentials([usernamePassword(credentialsId: 'aremox_dockerhub', passwordVariable: 'Password', usernameVariable: 'Usuario')]) {		echo 'DEPLOY'
 		sh 'docker tag app:test aremox/app:stable'
-		sh 'docker login'
+		sh 'docker login --password Password --username Usuario'
 		sh 'docker push aremox/app:stable'
 		}
       }
