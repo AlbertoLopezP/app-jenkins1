@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'BUILD'
-        echo 'Compilando!!!!'
+        echo 'Compilandosss!!!!'
       }
     }
     stage('Test') {
